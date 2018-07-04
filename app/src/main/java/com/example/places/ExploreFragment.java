@@ -10,10 +10,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
-public class ExploreFragment extends Fragment {
+import com.example.places.dialog.SelectPlacesDialogFragment;
+
+public class ExploreFragment extends Fragment implements SelectPlacesDialogFragment.OnPlaceSelectedListener {
     public static final String TAG = "SearchFragment";
     FragmentManager fragmentManager;
+    Button getLocationButton;
+
 
     public static ExploreFragment newInstance() {
         ExploreFragment f = new ExploreFragment();
@@ -80,14 +85,30 @@ public class ExploreFragment extends Fragment {
         Log.d(TAG,"onCreateView");
         fragmentManager = getActivity().getSupportFragmentManager();
         loadViews(layout);
+        getLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSelectPlacesDialog();
+            }
+        });
         return layout;
     }
 
 
     public void loadViews(View layout){
-
+        getLocationButton = layout.findViewById(R.id.get_location_button);
     }
 
+    private void showSelectPlacesDialog(){
+        SelectPlacesDialogFragment dialog = SelectPlacesDialogFragment.newInstance();
+        dialog.setTargetFragment(this,0);
+        dialog.show(fragmentManager, "SelectPlacesDialogFragment");
+    }
+
+    @Override
+    public void onInputData(String typedValue) {
+
+    }
 }
 
 
