@@ -8,5 +8,72 @@
         android:id="@+id/get_location_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_margin="16dp"
+        android:text="Set Location" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/food_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="food" />
+
+            <Button
+                android:id="@+id/drinks_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="drinks" />
+
+            <Button
+                android:id="@+id/coffee_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="coffee" />
+
+            <Button
+                android:id="@+id/shops_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="shops" />
+
+            <Button
+                android:id="@+id/arts_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="arts" />
+
+            <Button
+                android:id="@+id/outdoors_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="outdoors" />
+
+            <Button
+                android:id="@+id/sights_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sights" />
+
+            <Button
+                android:id="@+id/trending_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="trending" />
+        </LinearLayout>
+
+    </HorizontalScrollView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/places_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

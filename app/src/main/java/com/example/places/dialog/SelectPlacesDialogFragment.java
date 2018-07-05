@@ -38,6 +38,7 @@ public class SelectPlacesDialogFragment extends DialogFragment implements Adapte
     Button ok;
     EditText inputEditText;
     Activity activity;
+    AutoCompleteTextView autoCompView;
     private static final String LOG_TAG = "GooglePlaces";
     private static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
     private static final String TYPE_AUTOCOMPLETE = "/autocomplete";
@@ -73,21 +74,26 @@ public class SelectPlacesDialogFragment extends DialogFragment implements Adapte
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dialog_select_places,null);
         setCancelable(false);
-        ok =  view.findViewById(R.id.ok_btn);
-        AutoCompleteTextView autoCompView = view.findViewById(R.id.select_places_atv);
+        initViews(view);
         autoCompView.setAdapter(new GooglePlacesAutocompleteAdapter(getActivity(), R.layout.list_item));
         autoCompView.setOnItemClickListener(this);
-
 
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                listener.onInputData(autoCompView.getText().toString());
                 dismiss();
             }
         });
 
         return view;
     }
+
+    private void initViews(View view) {
+        ok =  view.findViewById(R.id.ok_btn);
+        autoCompView = view.findViewById(R.id.select_places_atv);
+    }
+
     public void onItemClick(AdapterView adapterView, View view, int position, long id) {
         String str = (String) adapterView.getItemAtPosition(position);
         Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();

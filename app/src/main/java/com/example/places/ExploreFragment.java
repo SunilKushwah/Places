@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +15,12 @@ import android.widget.Button;
 
 import com.example.places.dialog.SelectPlacesDialogFragment;
 
-public class ExploreFragment extends Fragment implements SelectPlacesDialogFragment.OnPlaceSelectedListener {
+public class ExploreFragment extends Fragment implements SelectPlacesDialogFragment.OnPlaceSelectedListener,View.OnClickListener {
     public static final String TAG = "SearchFragment";
     FragmentManager fragmentManager;
-    Button getLocationButton;
+    Button getLocationButton,foodButton,shopButton,drinksButton,coffeeButton,artsButton,
+            outdoorButton,sightButton,trendingButton;
+    RecyclerView placesRecyclerView;
 
 
     public static ExploreFragment newInstance() {
@@ -97,6 +100,24 @@ public class ExploreFragment extends Fragment implements SelectPlacesDialogFragm
 
     public void loadViews(View layout){
         getLocationButton = layout.findViewById(R.id.get_location_button);
+        getLocationButton.setOnClickListener(this);
+        foodButton = layout.findViewById(R.id.food_btn);
+        foodButton.setOnClickListener(this);
+        drinksButton = layout.findViewById(R.id.drinks_btn);
+        drinksButton.setOnClickListener(this);
+        coffeeButton = layout.findViewById(R.id.coffee_btn);
+        coffeeButton.setOnClickListener(this);
+        shopButton = layout.findViewById(R.id.shops_btn);
+        shopButton.setOnClickListener(this);
+        artsButton = layout.findViewById(R.id.arts_btn);
+        artsButton.setOnClickListener(this);
+        outdoorButton = layout.findViewById(R.id.outdoors_btn);
+        outdoorButton.setOnClickListener(this);
+        sightButton = layout.findViewById(R.id.sights_btn);
+        sightButton.setOnClickListener(this);
+        trendingButton = layout.findViewById(R.id.trending_btn);
+        trendingButton.setOnClickListener(this);
+        placesRecyclerView = layout.findViewById(R.id.places_rv);
     }
 
     private void showSelectPlacesDialog(){
@@ -108,6 +129,30 @@ public class ExploreFragment extends Fragment implements SelectPlacesDialogFragm
     @Override
     public void onInputData(String typedValue) {
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.get_location_button:
+                break;
+            case R.id.food_btn:
+                break;
+            case R.id.drinks_btn:
+                break;
+            case R.id.coffee_btn:
+                break;
+            case R.id.shops_btn:
+                break;
+            case R.id.arts_btn:
+                break;
+            case R.id.outdoors_btn:
+                break;
+            case R.id.sights_btn:
+                break;
+            case R.id.trending_btn:
+                break;
+        }
     }
 }
 
